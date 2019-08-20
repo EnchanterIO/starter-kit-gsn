@@ -8,9 +8,10 @@ In addition to the contents included in the [vanilla Starter Kit](https://github
 
 ## Requirements
 
-Install OpenZeppelin SDK, Ganache, and Truffle
+Install OpenZeppelin SDK, Ganache, and Truffle, Node v10
 
 ```
+nvm use 10.13.0
 npm install -g truffle@5.0.2 ganache-cli@6.3.0 @openzeppelin/cli@2.5.0
 ```
 
@@ -86,7 +87,7 @@ This kit uses Open Zeppelin https://github.com/OpenZeppelin/openzeppelin-network
 
 ```javascript
 // get GSN web3
-const context = useWeb3Network('http://127.0.0.1:8545', {
+const context = useWeb3Network("http://127.0.0.1:8545", {
   gsn: { dev: true }
 });
 ```

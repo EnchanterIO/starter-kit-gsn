@@ -49,9 +49,11 @@ export default function Counter(props) {
   };
 
   const [count, setCount] = useState(0);
+  const [counterIncrementer, setCounterIncrementer] = useState('');
 
   useEffect(() => {
     getCount();
+    getCounterIncrementer();
   }, [instance]);
 
   const getCount = async () => {
@@ -60,6 +62,15 @@ export default function Counter(props) {
       const response = await instance.methods.getCounter().call();
       // Update state with the result.
       setCount(response);
+    }
+  };
+
+  const getCounterIncrementer = async () => {
+    if (instance) {
+      // Get the value from the contract to prove it worked.
+      const response = await instance.methods.getCounterIncrementer().call();
+      // Update state with the result.
+      setCounterIncrementer(response);
     }
   };
 
@@ -76,6 +87,7 @@ export default function Counter(props) {
         setTransactionHash(receipt.transactionHash);
 
         getCount();
+        getCounterIncrementer();
         getDeploymentAndFunds();
 
         setSending(false);
@@ -183,6 +195,10 @@ export default function Counter(props) {
           <div className={styles.dataPoint}>
             <div className={styles.label}>Counter Value:</div>
             <div className={styles.value}>{count}</div>
+          </div>
+          <div className={styles.dataPoint}>
+            <div className={styles.label}>Counter Incrementer:</div>
+            <div className={styles.value}>{counterIncrementer}</div>
           </div>
           {isGSN && (
             <div className={styles.dataPoint}>

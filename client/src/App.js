@@ -24,14 +24,14 @@ function App() {
   //   },
   // });
 
-  // const context = useWeb3Network('http://127.0.0.1:8545', {
-  //   gsn: {
-  //     dev: true,
-  //     signKey,
-  //   },
-  // });
+  const context = useWeb3Network('http://127.0.0.1:8545', {
+    gsn: {
+      dev: false,
+      signKey,
+    },
+  });
 
-  const context = useWeb3Injected();
+  // const context = useWeb3Injected();
 
   // load Counter json artifact
   let counterJSON = undefined;
